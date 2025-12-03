@@ -1,4 +1,4 @@
-// todo 是否将ipc-main.ts文件中的代码拆分到多个文件中？通过abstract继承？或者注册回调函数？
+// Следует ли разделить код в файле ipc-main.ts на несколько файлов? Должен ли он быть реализован с использованием абстрактного наследования? Или следует зарегистрировать функции обратного вызова?
 import { ipcMain } from 'electron'
 import { IpcMainHandleClass } from './ipc-main-handle'
 
@@ -8,7 +8,7 @@ export const useMainDefaultIpc = () => {
       const ipcMainHandle = new IpcMainHandleClass()
       Object.entries(ipcMainHandle).forEach(
         ([ipcChannelName, ipcListener]: [string, () => void]) => {
-          console.log('已挂载ipcChannelName:', ipcChannelName)
+          console.log('IPCChannelName уже смонтирован:', ipcChannelName)
           if (typeof ipcListener === 'function') {
             ipcMain.handle(ipcChannelName, ipcListener)
           }

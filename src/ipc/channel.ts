@@ -1,124 +1,124 @@
-import type { ProgressInfo } from 'electron-updater'
+import type { ProgressInfo } from "electron-updater";
 
 export interface IpcMainEventListener<Send = void, Receive = void> {
   ipcMainHandle: Send extends void
     ? (event: Electron.IpcMainInvokeEvent) => Receive | Promise<Receive>
     : (
         event: Electron.IpcMainInvokeEvent,
-        args: Send,
-      ) => Receive | Promise<Receive>
+        args: Send
+      ) => Receive | Promise<Receive>;
   ipcRendererInvoke: Send extends void
     ? () => Promise<Receive>
-    : (args: Send) => Promise<Receive>
+    : (args: Send) => Promise<Receive>;
 }
 
 export interface IpcRendererEventListener<Send = void> {
   ipcRendererOn: Send extends void
     ? (event: Electron.IpcRendererEvent) => void
-    : (event: Electron.IpcRendererEvent, args: Send) => void
+    : (event: Electron.IpcRendererEvent, args: Send) => void;
   webContentSend: Send extends void
     ? (webContents: Electron.WebContents) => void
-    : (webContents: Electron.WebContents, args: Send) => void
+    : (webContents: Electron.WebContents, args: Send) => void;
 }
 
 export class IpcChannelMainClass {
-  IsUseSysTitle: IpcMainEventListener<void, boolean> = null
+  IsUseSysTitle: IpcMainEventListener<void, boolean> = null;
   /**
-   * 退出应用
+   * Выйти из приложения
    */
-  AppClose: IpcMainEventListener = null
-  CheckUpdate: IpcMainEventListener = null
-  ConfirmUpdate: IpcMainEventListener = null
+  AppClose: IpcMainEventListener = null;
+  CheckUpdate: IpcMainEventListener = null;
+  ConfirmUpdate: IpcMainEventListener = null;
   OpenMessagebox: IpcMainEventListener<
     Electron.MessageBoxOptions,
     Electron.MessageBoxReturnValue
-  > = null
-  StartDownload: IpcMainEventListener<string> = null
-  OpenErrorbox: IpcMainEventListener<{ title: string; message: string }> = null
-  StartServer: IpcMainEventListener<void, string> = null
-  StopServer: IpcMainEventListener<void, string> = null
-  HotUpdate: IpcMainEventListener = null
+  > = null;
+  StartDownload: IpcMainEventListener<string> = null;
+  OpenErrorbox: IpcMainEventListener<{ title: string; message: string }> = null;
+  StartServer: IpcMainEventListener<void, string> = null;
+  StopServer: IpcMainEventListener<void, string> = null;
+  HotUpdate: IpcMainEventListener = null;
   /**
-   * 窗口准备就绪
+   * Окно готово
    */
-  WinReady: IpcMainEventListener = null
+  WinReady: IpcMainEventListener = null;
   /**
    *
-   * 打开窗口
+   * Открытое окно
    */
   OpenWin: IpcMainEventListener<{
     /**
-     * 新的窗口地址
+     * Адрес нового окна
      *
      * @type {string}
      */
-    url: string
+    url: string;
 
     /**
-     * 是否是支付页
+     * Это страница оплаты?
      *
      * @type {boolean}
      */
-    IsPay?: boolean
+    IsPay?: boolean;
 
     /**
-     * 支付参数
+     * Параметры платежа
      *
      * @type {string}
      */
-    PayUrl?: string
+    PayUrl?: string;
 
     /**
-     * 发送的新页面数据
+     * Отправить данные новой страницы
      *
      * @type {unknown}
      */
-    sendData?: unknown
-  }> = null
+    sendData?: unknown;
+  }> = null;
 }
 export class IpcChannelRendererClass {
   // ipcRenderer
-  DownloadProgress: IpcRendererEventListener<number> = null
-  DownloadError: IpcRendererEventListener<Boolean> = null
-  DownloadPaused: IpcRendererEventListener<Boolean> = null
+  DownloadProgress: IpcRendererEventListener<number> = null;
+  DownloadError: IpcRendererEventListener<Boolean> = null;
+  DownloadPaused: IpcRendererEventListener<Boolean> = null;
   DownloadDone: IpcRendererEventListener<{
     /**
-     * 下载的文件路径
+     * Путь к загруженному файлу
      *
      * @type {string}
      */
-    filePath: string
-  }> = null
+    filePath: string;
+  }> = null;
   updateMsg: IpcRendererEventListener<{
-    state: number
-    msg: string | ProgressInfo
-  }> = null
+    state: number;
+    msg: string | ProgressInfo;
+  }> = null;
   UpdateProcessStatus: IpcRendererEventListener<{
     status:
-      | 'init'
-      | 'downloading'
-      | 'moving'
-      | 'finished'
-      | 'failed'
-      | 'download'
-    message: string
-  }> = null
+      | "init"
+      | "downloading"
+      | "moving"
+      | "finished"
+      | "failed"
+      | "download";
+    message: string;
+  }> = null;
 
-  SendDataTest: IpcRendererEventListener<unknown> = null
+  SendDataTest: IpcRendererEventListener<unknown> = null;
   BrowserViewTabDataUpdate: IpcRendererEventListener<{
-    bvWebContentsId: number
-    title: string
-    url: string
-    status: 1 | -1 // 1 添加/更新 -1 删除
-  }> = null
+    bvWebContentsId: number;
+    title: string;
+    url: string;
+    status: 1 | -1; // 1 Добавить/Обновить -1 Удалить
+  }> = null;
   BrowserViewTabPositionXUpdate: IpcRendererEventListener<{
-    dragTabOffsetX: number
-    positionX: number
-    bvWebContentsId: number
-  }> = null
-  BrowserTabMouseup: IpcRendererEventListener = null
+    dragTabOffsetX: number;
+    positionX: number;
+    bvWebContentsId: number;
+  }> = null;
+  BrowserTabMouseup: IpcRendererEventListener = null;
   HotUpdateStatus: IpcRendererEventListener<{
-    status: string
-    message: string
-  }> = null
+    status: string;
+    message: string;
+  }> = null;
 }

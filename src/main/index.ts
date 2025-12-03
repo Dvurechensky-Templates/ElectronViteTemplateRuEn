@@ -19,29 +19,31 @@ function onAppReady() {
   new InitWindow().initWindow()
   if (process.env.NODE_ENV === 'development') {
     const { VUEJS_DEVTOOLS } = require('electron-devtools-vendor')
-    session.defaultSession.loadExtension(VUEJS_DEVTOOLS, {
+    session.defaultSession.extensions.loadExtension(VUEJS_DEVTOOLS, {
       allowFileAccess: true,
     })
-    console.log('已安装: vue-devtools')
+    console.log('Установлено: vue-devtools')
   }
 }
 
 app.whenReady().then(onAppReady)
-// 由于9.x版本问题，需要加入该配置关闭跨域问题
+// Из-за проблем в версии 9.x необходимо добавить эту конфигурацию для отключения проблем с кросс-источниками.
 app.commandLine.appendSwitch('disable-features', 'OutOfBlinkCors')
 
 app.on('window-all-closed', () => {
-  // 所有平台均为所有窗口关闭就退出软件
+  // Все платформы закроют программное обеспечение после закрытия всех окон.
   app.quit()
 })
 app.on('browser-window-created', () => {
-  console.log('window-created')
+  console.log('Окно создано')
 })
 
 if (process.defaultApp) {
   if (process.argv.length >= 2) {
     app.removeAsDefaultProtocolClient('electron-vue-template')
-    console.log('由于框架特殊性开发环境下无法使用')
+    console.log(
+      'Ввиду особой природы фреймворка его невозможно использовать в среде разработки.',
+    )
   }
 } else {
   app.setAsDefaultProtocolClient('electron-vue-template')

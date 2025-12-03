@@ -1,4 +1,4 @@
-// 这里定义了静态文件路径的位置
+// Это определяет местоположение пути к статическому файлу.
 import { join } from 'path'
 import config from '@config/index'
 import { app } from 'electron'

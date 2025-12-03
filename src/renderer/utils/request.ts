@@ -4,35 +4,34 @@ const serves = axios.create({
   timeout: 5000,
 })
 
-// 设置请求发送之前的拦截器
+// Установите перехватчик перед отправкой запроса.
 serves.interceptors.request.use(
   (config) => {
-    // 设置发送之前数据需要做什么处理
+    // Настройте, какая обработка данных необходима перед отправкой.
     return config
   },
   (err) => Promise.reject(err),
 )
 
-// 设置请求接受拦截器
+// Настройте перехватчик принятия запросов
 serves.interceptors.response.use(
   (res) => {
-    // 设置接受数据之后，做什么处理
+    // Какая обработка выполняется после настройки параметров приема данных?
     if (res.data.code === 50000) {
       // ElMessage.error(res.data.data);
     }
     return res
   },
   (err) => {
-    // 判断请求异常信息中是否含有超时timeout字符串
+    // Проверьте, содержит ли информация об исключении запроса строку «timeout».
     if (err.message.includes('timeout')) {
-      console.log('错误回调', err)
+      console.log('Обратный вызов при ошибке', err)
     }
     if (err.message.includes('Network Error')) {
-      console.log('错误回调', err)
+      console.log('Обратный вызов при ошибке', err)
     }
     return Promise.reject(err)
   },
 )
 
-// 将serves抛出去
 export default serves

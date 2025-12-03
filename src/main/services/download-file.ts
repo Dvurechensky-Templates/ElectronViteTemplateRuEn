@@ -8,9 +8,9 @@ import { webContentSend } from './web-content-send'
 /**
  *
  * @description
- * @returns {void} 下载类
- * @param {mainWindow} 主窗口
- * @param {downloadUrl} 下载地址，当未传入时则会使用预先设置好的baseUrl拼接名称
+ * @returns {void} Скачать категорию
+ * @param {mainWindow} Главное меню
+ * @param {downloadUrl} Адрес загрузки; если он не указан, для добавления имени будет использоваться предварительно заданный baseUrl.
  * @author Sky
  * @date 2020-08-12
  */
@@ -27,7 +27,7 @@ class Main {
       ? `electron_${this.version}_${this.Sysarch}.exe`
       : `electron_${this.version}_mac.dmg`,
   )
-  private isDownloadListenerRegistered = false // 新增标志位
+  private isDownloadListenerRegistered = false // Добавить новый флаг
 
   constructor(mainWindow: BrowserWindow, downloadUrl?: string) {
     this.mainWindow = mainWindow
@@ -38,7 +38,7 @@ class Main {
         : this.baseUrl +
           `electron_${this.version}_mac.dmg?${new Date().getTime()}`
 
-    // 只注册一次 will-download 事件
+    // Регистрируйте событие will-download только один раз
     if (!this.isDownloadListenerRegistered && this.mainWindow) {
       this.mainWindow.webContents.session.on(
         'will-download',
@@ -61,8 +61,8 @@ class Main {
               default:
                 webContentSend.DownloadError(this.mainWindow!.webContents, true)
                 dialog.showErrorBox(
-                  '下载出错',
-                  '由于网络或其他未知原因导致下载出错',
+                  'Ошибка загрузки',
+                  'Ошибка загрузки, вызванная проблемами с сетью или другими неизвестными причинами.',
                 )
                 break
             }
@@ -78,8 +78,8 @@ class Main {
               case 'interrupted':
                 webContentSend.DownloadError(this.mainWindow!.webContents, true)
                 dialog.showErrorBox(
-                  '下载出错',
-                  '由于网络或其他未知原因导致下载出错.',
+                  'Ошибка загрузки',
+                  'Ошибка загрузки, вызванная проблемами с сетью или другими неизвестными причинами..',
                 )
                 break
               default:
@@ -93,7 +93,7 @@ class Main {
   }
 
   start() {
-    // 更新时检查有无同名文件，若有就删除，若无就开始下载
+    // В процессе обновления проверьте наличие файлов с таким же именем. Если файл с таким именем существует, удалите его; в противном случае начните загрузку.
     stat(this.HistoryFilePath, async (err, stats) => {
       try {
         if (stats) {

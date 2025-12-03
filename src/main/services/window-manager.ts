@@ -18,7 +18,7 @@ class MainInit {
     this.childProcessGone = childProcessGone
     this.mainWindowGone = mainWindowGone
   }
-  // 主窗口函数
+  // Функция главного окна
   createMainWindow() {
     this.mainWindow = new BrowserWindow({
       titleBarOverlay: {
@@ -34,32 +34,32 @@ class MainInit {
       webPreferences: {
         sandbox: false,
         webSecurity: false,
-        // 如果是开发模式可以使用devTools
+        // Если вы находитесь в режиме разработки, вы можете использовать devTools.
         devTools: process.env.NODE_ENV === 'development',
-        // 在macos中启用橡皮动画
+        // Включение анимации ластика в macOS
         scrollBounce: process.platform === 'darwin',
         preload: getPreloadFile('preload'),
       },
     })
 
-    // 加载主窗口
+    // Загрузить главное окно
     this.mainWindow.loadURL(this.winURL)
-    // dom-ready之后显示界面
+    // Интерфейс отображается после готовности DOM.
     this.mainWindow.once('ready-to-show', () => {
       this.mainWindow.show()
       if (config.UseStartupChart) this.loadWindow.destroy()
     })
-    // 开发模式下自动开启devtools
+    // Автоматически включать devtools в режиме разработки
     if (process.env.NODE_ENV === 'development') {
       this.mainWindow.webContents.openDevTools({
         mode: 'undocked',
         activate: true,
       })
     }
-    // 不知道什么原因，反正就是这个窗口里的页面触发了假死时执行
+    // По какой-то причине страница в этом окне запустила выполнение во время кажущегося зависания.
     this.mainWindowGone(this.mainWindow)
     /**
-     * 新的gpu崩溃检测，详细参数详见：http://www.electronjs.org/docs/api/app
+     * Новая функция обнаружения сбоев графического процессора, подробные параметры можно найти по адресу: http://www.electronjs.org/docs/api/app
      * @returns {void}
      * @author zmr (umbrella22)
      * @date 2020-11-27
@@ -69,7 +69,7 @@ class MainInit {
       this.mainWindow = null
     })
   }
-  // 加载窗口函数
+  // Функция окна загрузки
   loadingWindow(loadingURL: string) {
     this.loadWindow = new BrowserWindow({
       width: 400,
@@ -87,12 +87,12 @@ class MainInit {
     this.loadWindow.loadURL(loadingURL)
     this.loadWindow.show()
     this.loadWindow.setAlwaysOnTop(true)
-    // 延迟两秒可以根据情况后续调快，= =，就相当于个，sleep吧，就那种。 = =。。。
+    // Двухсекундную задержку можно настроить на более поздний срок в зависимости от ситуации. Это как функция сна, что-то вроде того. 。 = =。。。
     setTimeout(() => {
       this.createMainWindow()
     }, 1500)
   }
-  // 初始化窗口函数
+  // Инициализировать оконную функцию
   initWindow() {
     if (config.UseStartupChart) {
       return this.loadingWindow(this.shartURL)

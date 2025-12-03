@@ -1,5 +1,5 @@
 /**
- * power by biuuu
+ * сила от biuuu
  */
 
 import { emptyDir, createWriteStream, readFile, copy, remove } from 'fs-extra'
@@ -21,10 +21,10 @@ const updatePath = resolve(appPath, '..', '..', 'update')
 const request = axios.create()
 
 /**
- * @param data 文件流
- * @param type 类型，默认sha256
- * @param key 密钥，用于匹配计算结果
- * @returns {string} 计算结果
+ * @param data файловый поток
+ * @param type Тип, по умолчанию sha256
+ * @param key Для сопоставления результатов расчетов используется ключ.
+ * @returns {string} Результат расчета
  * @author umbrella22
  * @date 2021-03-05
  */
@@ -35,8 +35,8 @@ function hash(data: Buffer, type = 'sha256', key = 'Sky'): string {
 }
 
 /**
- * @param url 下载地址
- * @param filePath 文件存放地址
+ * @param url Скачать адрес
+ * @param filePath Адрес хранения файлов
  * @returns {void}
  * @author umbrella22
  * @date 2021-03-05
@@ -60,7 +60,7 @@ interface Res extends AxiosResponse<any> {
 }
 
 /**
- * @param windows 指主窗口
+ * @param windows Относится к главному окну
  * @returns {void}
  * @author umbrella22
  * @date 2021-03-05

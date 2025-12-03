@@ -50,19 +50,19 @@ export const logStats = (proc: string, data: any) => {
 
 export const removeJunk = (chunk: string) => {
   if (cliConfig.dev.removeElectronJunk) {
-    // Example: 2018-08-10 22:48:42.866 Electron[90311:4883863] *** WARNING: Textured window <AtomNSWindow: 0x7fb75f68a770>
+    // Пример: 2018-08-10 22:48:42.866 Electron[90311:4883863] *** ВНИМАНИЕ: Текстурированное окно <AtomNSWindow: 0x7fb75f68a770>
     if (
       /\d+-\d+-\d+ \d+:\d+:\d+\.\d+ Electron(?: Helper)?\[\d+:\d+] /.test(chunk)
     ) {
       return false
     }
 
-    // Example: [90789:0810/225804.894349:ERROR:CONSOLE(105)] "Uncaught (in promise) Error: Could not instantiate: ProductRegistryImpl.Registry", source: chrome-devtools://devtools/bundled/inspector.js (105)
+    // Пример: [90789:0810/225804.894349:ERROR:CONSOLE(105)] «Неперехваченная (в обещании) ошибка: не удалось создать экземпляр: ProductRegistryImpl.Registry», источник: chrome-devtools://devtools/bundled/inspector.js (105)
     if (/\[\d+:\d+\/|\d+\.\d+:ERROR:CONSOLE\(\d+\)\]/.test(chunk)) {
       return false
     }
 
-    // Example: ALSA lib confmisc.c:767:(parse_card) cannot find card '0'
+    // Пример: ALSA lib confmisc.c:767:(parse_card) не может найти карту '0'
     if (/ALSA lib [a-z]+\.c:\d+:\([a-z_]+\)/.test(chunk)) {
       return false
     }

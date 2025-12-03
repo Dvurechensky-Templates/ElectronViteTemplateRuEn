@@ -32,7 +32,9 @@
     "icon": "build/icons/icon.icns"
   },
   "win": {
-    "icon": "build/icons/icon.ico"
+    "icon": "build/icons/icon.ico",
+    "target": "nsis",
+    "signAndEditExecutable": false
   },
   "linux": {
     "icon": "build/icons"

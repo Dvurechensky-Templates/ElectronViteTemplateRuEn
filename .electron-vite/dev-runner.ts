@@ -31,14 +31,16 @@ interface Shortcut {
 const shortcutList: Shortcut[] = [
   {
     key: 'r',
-    description: config.dev.chineseLog ? '重启主进程' : 'Restart Main Process',
+    description: config.dev.chineseLog
+      ? '重启主进程'
+      : 'Перезапустить основной процесс',
     action() {
       restartElectron()
     },
   },
   {
     key: 'q',
-    description: config.dev.chineseLog ? '退出' : 'Exit',
+    description: config.dev.chineseLog ? '退出' : 'Выход',
     action() {
       electronProcess?.kill()
       readlineInterface?.close()
@@ -47,7 +49,7 @@ const shortcutList: Shortcut[] = [
   },
   {
     key: 'h',
-    description: config.dev.chineseLog ? '显示帮助' : 'Show Help',
+    description: config.dev.chineseLog ? '显示帮助' : 'Показать справку',
     action() {
       process.stdout.write('\x1B[2J\x1B[3J')
       showHelp()
@@ -68,7 +70,7 @@ async function startRenderer(port: number): Promise<void> {
         `${
           config.dev.chineseLog
             ? '  正在准备主进程，请等待...'
-            : '  Preparing main process, please wait...'
+            : '  Подготовка основного процесса, пожалуйста, подождите...'
         }`,
       ) +
       '\n\n',
@@ -102,7 +104,7 @@ function startMain(): Promise<void> {
           `${
             config.dev.chineseLog
               ? '受控重启已启用,请手动输入r + 回车重启'
-              : 'Controlled restart is enabled, please manually enter r + Enter to restart'
+              : 'Управляемый перезапуск включен. Для перезапуска нажмите r + Enter вручную.'
           }`,
         )
       }
@@ -117,7 +119,7 @@ function startPreload(): Promise<void> {
         `${
           config.dev.chineseLog
             ? '  正在准备预加载脚本，请等待...'
-            : '  Preparing preLoad File, please wait...'
+            : '  Подготовка файла предварительной загрузки, пожалуйста, подождите...'
         }`,
       ) +
       '\n\n',
@@ -150,7 +152,7 @@ function startPreload(): Promise<void> {
           `${
             config.dev.chineseLog
               ? '受控重启已启用,请手动输入r + 回车重启'
-              : 'Controlled restart is enabled, please manually enter r + Enter to restart'
+              : 'Управляемый перезапуск включен. Для перезапуска нажмите r + Enter вручную.'
           }`,
         )
       }
@@ -202,7 +204,7 @@ function onInputAction(input: string) {
       chalk.yellow.bold(
         config.dev.chineseLog
           ? '受控重启被禁用，请在启动时使用 --controlledRestart 选项启用'
-          : 'Controlled restart is disabled, please use the --controlledRestart option to enable when starting',
+          : 'Управляемый перезапуск отключен, используйте опцию --controlledRestart для включения при запуске.',
       ),
     )
     return
@@ -224,7 +226,7 @@ function initReadline() {
 function showHelp() {
   console.log(
     chalk.green.bold(
-      `${config.dev.chineseLog ? '可用快捷键：\n' : 'Available shortcuts:\n'}`,
+      `${config.dev.chineseLog ? '可用快捷键：\n' : 'Доступные ярлыки:\n'}`,
     ),
   )
   shortcutList.forEach((shortcut) => {
@@ -235,7 +237,7 @@ function showHelp() {
       return
     }
     console.log(
-      `Enter ${chalk.green.bold(shortcut.key)} + Enter ${shortcut.description}`,
+      `Введите: ${chalk.green.bold(shortcut.key)} + Введите: ${shortcut.description}`,
     )
   })
   console.log('\n')
@@ -258,7 +260,7 @@ function greeting() {
   } else console.log(chalk.yellow.bold('\n  electron-vite'))
   console.log(
     chalk.blue(
-      `${config.dev.chineseLog ? '  准备启动...' : '  getting ready...'}`,
+      `${config.dev.chineseLog ? '  准备启动...' : '  готовлюсь...'}`,
     ) + '\n',
   )
 }

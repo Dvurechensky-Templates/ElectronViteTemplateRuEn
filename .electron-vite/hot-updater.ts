@@ -41,7 +41,7 @@ const start = async () => {
   if (buildConfig.asar) {
     errorLog(
       `${chalk.red(
-        'Please make sure the build.asar option in the Package.json file is set to false',
+        'Убедитесь, что параметр build.asar в файле Package.json имеет значение false.',
       )}\n`,
     )
     return
@@ -51,8 +51,8 @@ const start = async () => {
     errorLog(
       `${
         chalk.red(
-          'HotPublishConfigName is not set, which will cause the update to fail, please set it in the config/index.js \n',
-        ) + chalk.red.bold(`\n  Packing failed \n`)
+          'HotPublishConfigName не задан, что приведет к сбою обновления. Задайте его в файле config/index.js. \n',
+        ) + chalk.red.bold(`\n  Упаковка не удалась \n`)
       }`,
     )
     process.exit(1)
@@ -62,14 +62,14 @@ const start = async () => {
     if (err) {
       errorLog(
         `${chalk.red(
-          'No resource files were found, please execute this command after the build command',
+          'Файлы ресурсов не найдены, выполните эту команду после команды сборки.',
         )}\n`,
       )
       return
     }
 
     try {
-      console.log(chalk.green.bold(`Check the resource files \n`))
+      console.log(chalk.green.bold(`Проверьте файлы ресурсов \n`))
       const packResourcesPath = join('.', 'build', 'resources', 'dist')
       const packPackagePath = join('.', 'build', 'resources')
       const resourcesPath = join('.', 'dist')
@@ -81,7 +81,7 @@ const start = async () => {
       await ensureDir(packResourcesPath)
       await emptyDir(packResourcesPath)
       await copy(resourcesPath, packResourcesPath)
-      okayLog(chalk.cyan.bold(`File copy complete \n`))
+      okayLog(chalk.cyan.bold(`Копирование файла завершено \n`))
       await outputJSON(join(packPackagePath, 'package.json'), {
         name: packageFile.name,
         productName: buildConfig.productName,
@@ -91,7 +91,7 @@ const start = async () => {
         author: packageFile.author,
         dependencies: packageFile.dependencies,
       })
-      okayLog(chalk.cyan.bold(`Rewrite package file complete \n`))
+      okayLog(chalk.cyan.bold(`Переписать файл пакета полностью \n`))
       await ensureDir(outputPath)
       await emptyDir(outputPath)
       createZip(appPath, zipPath)
@@ -109,14 +109,14 @@ const start = async () => {
       )
       okayLog(
         chalk.cyan.bold(
-          `Zip file complete, Start cleaning up redundant files \n`,
+          `Zip-файл готов, приступайте к очистке ненужных файлов. \n`,
         ),
       )
       await remove(zipPath)
       await remove(appPath)
-      okayLog(chalk.cyan.bold(`Cleaning up redundant files completed \n`))
-      doneLog('The resource file is packaged!\n')
-      console.log('File location: ' + chalk.green(outputPath) + '\n')
+      okayLog(chalk.cyan.bold(`Очистка ненужных файлов завершена. \n`))
+      doneLog('Файл ресурсов упакован!\n')
+      console.log('Местоположение файла: ' + chalk.green(outputPath) + '\n')
     } catch (error) {
       errorLog(`${chalk.red(error.message || error)}\n`)
       process.exit(1)

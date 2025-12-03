@@ -87,7 +87,7 @@ setTimeout(() => {
 }, 1000)
 
 function changeLanguage() {
-  setLanguage(globalLang.value === 'zh-cn' ? 'en' : 'zh-cn')
+  setLanguage(globalLang.value === 'ru' ? 'en' : 'ru')
 }
 
 function startCrash() {
@@ -115,7 +115,7 @@ function CheckUpdate(data: string) {
   switch (data) {
     case 'one':
       ipcRendererChannel.CheckUpdate.invoke()
-      console.log('启动检查')
+      console.log('Начать проверку')
       break
     case 'two':
       ipcRendererChannel.StartDownload.invoke('https://xxx').then(() => {
@@ -150,8 +150,8 @@ ipcRendererChannel.DownloadError.on((event, arg) => {
 ipcRendererChannel.DownloadPaused.on((event, arg) => {
   if (arg) {
     progressStaus.value = 'warning'
-    // ElMessageBox.alert("下载由于未知原因被中断！", "提示", {
-    //   confirmButtonText: "重试",
+    // ElMessageBox.alert("Загрузка прервана по неизвестным причинам！", "Оповещение", {
+    //   confirmButtonText: "Попробуйте еще раз",
     //   callback: (action) => {
     //     ipcRenderer.invoke("start-download");
     //   },
@@ -161,8 +161,8 @@ ipcRendererChannel.DownloadPaused.on((event, arg) => {
 ipcRendererChannel.DownloadDone.on((event, age) => {
   filePath.value = age.filePath
   progressStaus.value = 'success'
-  // ElMessageBox.alert("更新下载完成！", "提示", {
-  //   confirmButtonText: "确定",
+  // ElMessageBox.alert("Загрузка обновления завершена！", "Оповещение", {
+  //   confirmButtonText: "Ок",
   //   callback: (action) => {
   //     shell.shell.openPath(filePath.value);
   //   },
@@ -173,21 +173,21 @@ ipcRendererChannel.updateMsg.on((event, age) => {
   switch (age.state) {
     case -1:
       const msgdata = {
-        title: '发生错误',
+        title: 'Произошла ошибка',
         message: age.msg as string,
       }
       dialogVisible.value = false
       ipcRendererChannel.OpenErrorbox.invoke(msgdata)
       break
     case 0:
-      console.log('check-update')
+      console.log('проверка обновлений')
       break
     case 1:
       dialogVisible.value = true
-      console.log('has update download-ing')
+      console.log('идет загрузка обновлений')
       break
     case 2:
-      console.log('not new version')
+      console.log('нет новых версий')
       break
     case 3:
       percentage.value = Number(
@@ -195,7 +195,7 @@ ipcRendererChannel.updateMsg.on((event, age) => {
       )
       break
     case 4:
-      progressStaus.value = 'success'
+      progressStaus.value = 'успешно'
       ipcRendererChannel.ConfirmUpdate.invoke()
       break
     default:
@@ -205,16 +205,16 @@ ipcRendererChannel.updateMsg.on((event, age) => {
 ipcRendererChannel.UpdateProcessStatus.on((event, msg) => {
   switch (msg.status) {
     case 'downloading':
-      console.log('正在下载')
+      console.log('Загрузка')
       break
     case 'moving':
-      console.log('正在移动文件')
+      console.log('Перемещение файлов')
       break
     case 'finished':
-      console.log('成功,请重启')
+      console.log('Успех, пожалуйста, перезагрузите.')
       break
     case 'failed':
-      console.log('msg.message.message')
+      console.log('Ошибка')
       break
 
     default:

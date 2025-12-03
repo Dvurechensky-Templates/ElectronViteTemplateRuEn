@@ -1,15 +1,15 @@
 <template>
   <div class="window-title" v-if="!IsUseSysTitle && isNotMac && !IsWeb">
-    <!-- 软件logo预留位置 -->
+    <!-- Зарезервированное место для логотипа программного обеспечения -->
     <div style="-webkit-app-region: drag" class="logo">
       <img
         src="@renderer/assets/icons/svg/electron-logo.svg"
         class="icon-logo"
       />
     </div>
-    <!-- 菜单栏位置 -->
+    <!-- Расположение строки меню -->
     <div></div>
-    <!-- 中间标题位置 -->
+    <!-- Cредняя позиция в заголовке -->
     <div style="-webkit-app-region: drag" class="title"></div>
   </div>
   <div v-else-if="!IsUseSysTitle && !isNotMac" class="window-title"></div>

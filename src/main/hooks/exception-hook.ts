@@ -8,8 +8,8 @@ import type {
 
 export interface UseProcessExceptionRetrun {
   /**
-   * Emitted when the renderer process unexpectedly disappears. This is normally because it was crashed or killed.
-   * If a listener is not passed in, it will default to following the crash prompt
+   * Возникает при неожиданном исчезновении процесса рендеринга. Обычно это происходит из-за сбоя или завершения процесса.
+   * Если прослушиватель не передан, он по умолчанию будет следовать подсказке о сбое.
    *
    * @see https://www.electronjs.org/docs/latest/api/app#event-render-process-gone
    */
@@ -21,8 +21,8 @@ export interface UseProcessExceptionRetrun {
     ) => void,
   ) => void
   /**
-   * Emitted when the child process unexpectedly disappears. This is normally because it was crashed or killed. It does not include renderer processes.
-   * If a listener is not passed in, it will default to following the crash prompt
+   * Генерируется при неожиданном исчезновении дочернего процесса. Обычно это происходит из-за его сбоя или завершения. Это не относится к процессам рендеринга.
+   * Если прослушиватель не передан, он по умолчанию будет следовать подсказке о сбое.
    *
    * @see https://www.electronjs.org/docs/latest/api/app#event-child-process-gone
    */
@@ -54,20 +54,22 @@ export const useProcessException = (): UseProcessExceptionRetrun => {
       }
       switch (details.reason) {
         case 'crashed':
-          message.title = '警告'
-          message.buttons = ['确定', '退出']
-          message.message = '图形化进程崩溃，是否进行软重启操作？'
+          message.title = 'Предупреждение'
+          message.buttons = ['Ок', 'Отмена']
+          message.message =
+            'Графический процесс рухнул. Стоит ли выполнить мягкую перезагрузку?？'
           break
         case 'killed':
-          message.title = '警告'
-          message.buttons = ['确定', '退出']
+          message.title = 'Предупреждение'
+          message.buttons = ['Ок', 'Отмена']
           message.message =
-            '由于未知原因导致图形化进程被终止，是否进行软重启操作？'
+            'Графический процесс был прерван по неизвестным причинам. Хотите выполнить мягкую перезагрузку?？'
           break
         case 'oom':
-          message.title = '警告'
-          message.buttons = ['确定', '退出']
-          message.message = '内存不足，是否软重启释放内存？'
+          message.title = 'Предупреждение'
+          message.buttons = ['Ок', 'Отмена']
+          message.message =
+            'Недостаточно памяти. Нужно ли выполнить мягкую перезагрузку, чтобы освободить память?？'
           break
 
         default:
@@ -105,15 +107,16 @@ export const useProcessException = (): UseProcessExceptionRetrun => {
         case 'GPU':
           switch (details.reason) {
             case 'crashed':
-              message.title = '警告'
-              message.buttons = ['确定', '退出']
-              message.message = '硬件加速进程已崩溃，是否关闭硬件加速并重启？'
+              message.title = 'Предупреждение'
+              message.buttons = ['Ок', 'Отмена']
+              message.message =
+                'Произошёл сбой в процессе аппаратного ускорения. Хотите отключить аппаратное ускорение и перезапустить?？'
               break
             case 'killed':
-              message.title = '警告'
-              message.buttons = ['确定', '退出']
+              message.title = 'Предупреждение'
+              message.buttons = ['Ок', 'Отмена']
               message.message =
-                '硬件加速进程被意外终止，是否关闭硬件加速并重启？'
+                'Процесс аппаратного ускорения был неожиданно прерван. Хотите отключить аппаратное ускорение и перезапустить компьютер?？'
               break
             default:
               break
@@ -132,7 +135,7 @@ export const useProcessException = (): UseProcessExceptionRetrun => {
           noLink: true,
         })
         .then((res) => {
-          // 当显卡出现崩溃现象时使用该设置禁用显卡加速模式。
+          // Используйте этот параметр для отключения режима ускорения видеокарты в случае сбоя видеокарты.
           if (res.response === 0) {
             if (details.type === 'GPU') app.disableHardwareAcceleration()
             window.reload()
@@ -152,9 +155,10 @@ export const useProcessException = (): UseProcessExceptionRetrun => {
       dialog
         .showMessageBox(window, {
           type: 'warning',
-          title: '警告',
-          buttons: ['重载', '退出'],
-          message: '图形化进程失去响应，是否等待其恢复？',
+          title: 'Предупреждение',
+          buttons: ['Перегрузка', 'Отмена'],
+          message:
+            'Графический процесс перестал отвечать. Стоит ли ждать его возобновления?？',
           noLink: true,
         })
         .then((res) => {

@@ -1,6 +1,6 @@
 /**
- * 性能工具
- * 1. 计算方法执行时间
+ * Инструменты производительности
+ * 1. Время выполнения метода расчета
  * @returns {void}
  * @date 2019-11-29
  */
@@ -10,8 +10,8 @@ import Timer from './timer'
 
 class Performance {
   /**
-   * 计算情况
-   * @returns {Function}  执行返回值获取时间信息
+   * Расчетная ситуация
+   * @returns {Function}  Возвращаемое значение выполнения для получения информации о времени
    * @date 2019-11-29
    */
   startExecute(name = ''): Function {
@@ -21,7 +21,7 @@ class Performance {
       const executeTime = timer.stop()
       const endMemoryInfo = this.getMemoryInfo()
       console.log(
-        '%cPerformance%c \n1. 路由路径：%c%s%c\n2. 执行耗时： %c%sms%c \n3. 内存波动：%sB \n4. 已分配内存： %sMB \n5. 已使用内存：%sMB \n6. 剩余内存： %sMB',
+        '%cПроизводительность%c \n1. Путь маршрутизации：%c%s%c\n2. Время выполнения： %c%sms%c \n3. Колебания памяти：%sB \n4. Выделенная память： %sMB \n5. Используемая память：%sMB \n6. Оставшаяся память： %sMB',
         'padding: 2px 4px 2px 4px; background-color: #4caf50; color: #fff; border-radius: 4px;',
         '',
         'color: #ff6f00',
@@ -39,7 +39,7 @@ class Performance {
   }
 
   /**
-   * 获取内存信息
+   * Получить информацию о памяти
    * @returns {memoryInfo}
    * @date 2019-11-29
    */
@@ -53,7 +53,7 @@ class Performance {
   }
 
   /**
-   * 转化为MB
+   * Конвертировать в МБ
    * @returns {string}
    * @date 2019-11-29
    */

@@ -35,7 +35,7 @@ export default (env = 'production', type = 'main') => {
         preventAssignment: true,
         'process.env.userConfig': config ? JSON.stringify(config) : '{}',
       }),
-      // 提供路径和读取别名
+      // Укажите путь и псевдоним чтения
       nodeResolve({
         preferBuiltins: true,
         browser: false,
@@ -46,23 +46,23 @@ export default (env = 'production', type = 'main') => {
       }),
       json(),
       esbuild({
-        // All options are optional
-        include: /\.[jt]s?$/, // default, inferred from `loaders` option
+        // Все опции являются необязательными
+        include: /\.[jt]s?$/, // default, выведено из опции `loaders`
         exclude: /node_modules/, // default
-        // watch: process.argv.includes('--watch'), // rollup 中有配置
+        // watch: process.argv.includes('--watch'), // У накопительного пакета есть конфигурация
         sourceMap: false, // default
         minify: env === 'production',
-        target: 'es2017', // default, or 'es20XX', 'esnext'
-        // Like @rollup/plugin-replace
+        target: 'es2017', // default, или 'es20XX', 'esnext'
+        // Нравиться @rollup/plugin-replace
         define: {
           __VERSION__: '"x.y.z"',
         },
-        // Add extra loaders
+        // Добавьте дополнительных загрузчиков
         loaders: {
-          // Add .json files support
+          // Добавить поддержку файлов .json
           // require @rollup/plugin-commonjs
           '.json': 'json',
-          // Enable JSX in .js files too
+          // Включить JSX также в файлах .js
           '.js': 'jsx',
         },
       }),

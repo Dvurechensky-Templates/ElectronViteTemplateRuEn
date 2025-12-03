@@ -41,13 +41,13 @@ async function unionBuild() {
   const tasksLister = new Listr(
     [
       {
-        title: 'building main process',
+        title: 'основной процесс построения',
         task: async () => {
           try {
             const build = await rollup(mainOpt)
             await build.write(mainOpt.output as OutputOptions)
           } catch (error) {
-            errorLog(`failed to build main process\n`)
+            errorLog(`Не удалось построить основной процесс\n`)
             return Promise.reject(error)
           }
         },
@@ -59,22 +59,20 @@ async function unionBuild() {
             const build = await rollup(preloadOpt)
             await build.write(preloadOpt.output as OutputOptions)
           } catch (error) {
-            errorLog(`failed to build main process\n`)
+            errorLog(`Не удалось построить основной процесс\n`)
             return Promise.reject(error)
           }
         },
       },
       {
-        title: 'building renderer process',
+        title: 'процесс построения рендерера',
         task: async (_, tasks) => {
           try {
             const { build } = await import('vite')
             await build({ configFile: join(__dirname, 'vite.config.mts') })
-            tasks.output = `take it away ${chalk.yellow(
-              '`electron-builder`',
-            )}\n`
+            tasks.output = `забери это ${chalk.yellow('`electron-builder`')}\n`
           } catch (error) {
-            errorLog(`failed to build renderer process\n`)
+            errorLog(`не удалось построить процесс рендеринга\n`)
             return Promise.reject(error)
           }
         },
@@ -92,7 +90,7 @@ async function web() {
   await deleteAsync(['dist/web/*', '!.gitkeep'])
   const { build } = await import('vite')
   build({ configFile: join(__dirname, 'vite.config.mts') }).then((res) => {
-    doneLog(`web build success`)
+    doneLog(`успех веб-сборки`)
     process.exit()
   })
 }

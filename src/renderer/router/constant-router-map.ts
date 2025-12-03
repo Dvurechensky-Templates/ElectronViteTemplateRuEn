@@ -7,7 +7,7 @@ const routes: Array<RouteRecordRaw> = [
   },
   {
     path: '/',
-    name: '总览',
+    name: 'Обзор',
     component: () => import('@renderer/views/landing-page/LandingPage.vue'),
   },
 ]

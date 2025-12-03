@@ -1,9 +1,9 @@
 interface DesktopMsgProps {
-  /** 标题 */
+  /** Заголовок */
   title: string
-  /** 正文 */
+  /** Тело */
   body: string
-  /** ICON */
+  /** Иконка */
   icon?: string
 }
 
@@ -11,12 +11,13 @@ interface DesktopMsgProps {
  * @export
  * @Author: Sky
  * @Date: 2019-09-29 20:23:16
+ * @Last Modified by: Dvurechensky
  * @Last Modified by: Sky
  * @Last Modified time: 2019-09-29 21:01:24
  * @param {DesktopMsgProps} option
  * @returns
- * @feature 对于普通的通知只需要加入传入title,body；而对于需要图标的还需要传入icon，当然它也接受一个图片链接,当用户点击通知之后，会返回一个true
- * 由于是一个promise，请使用then接受
+ * @feature Для обычных уведомлений достаточно передать только заголовок и текст; для уведомлений, требующих значок, необходимо также передать значок. Также принимается ссылка на изображение. Когда пользователь нажимает на уведомление, возвращается значение true.
+ * Поскольку это обещание, пожалуйста, используйте `then`, чтобы принять его.
  **/
 
 export function DesktopMsg(option: DesktopMsgProps): Promise<boolean> {

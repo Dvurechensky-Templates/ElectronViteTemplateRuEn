@@ -23,13 +23,13 @@ export class IpcMainHandleClass implements IIpcMainHandle {
   StartServer: (
     event: Electron.IpcMainInvokeEvent,
   ) => string | Promise<string> = async () => {
-    dialog.showErrorBox('error', 'API is obsolete')
-    return 'API is obsolete'
+    dialog.showErrorBox('Ошибка', 'API устарел')
+    return 'API устарел'
   }
   StopServer: (event: Electron.IpcMainInvokeEvent) => string | Promise<string> =
     async () => {
-      dialog.showErrorBox('error', 'API is obsolete')
-      return 'API is obsolete'
+      dialog.showErrorBox('Ошибка', 'API устарел')
+      return 'API устарел'
     }
   HotUpdate: (event: Electron.IpcMainInvokeEvent) => void | Promise<void> = (
     event,
@@ -54,14 +54,14 @@ export class IpcMainHandleClass implements IIpcMainHandle {
       webPreferences: {
         sandbox: false,
         webSecurity: false,
-        // 如果是开发模式可以使用devTools
+        // Если вы находитесь в режиме разработки, вы можете использовать devTools.
         devTools: process.env.NODE_ENV === 'development',
-        // 在macos中启用橡皮动画
+        // Включение анимации ластика в macOS
         scrollBounce: process.platform === 'darwin',
         preload: getPreloadFile('main-preload'),
       },
     })
-    // 开发模式下自动开启devtools
+    // Автоматически включать devtools в режиме разработки
     if (process.env.NODE_ENV === 'development') {
       childWin.webContents.openDevTools({ mode: 'undocked', activate: true })
     }
@@ -69,7 +69,7 @@ export class IpcMainHandleClass implements IIpcMainHandle {
     childWin.once('ready-to-show', () => {
       // childWin.show()
       if (arg.IsPay) {
-        // 检查支付时候自动关闭小窗口
+        // Автоматически закрывать маленькое окно при проверке платежа.
         const testUrl = setInterval(() => {
           const Url = childWin.webContents.getURL()
           if (arg.PayUrl && Url.includes(arg.PayUrl)) {
@@ -81,7 +81,7 @@ export class IpcMainHandleClass implements IIpcMainHandle {
         })
       }
     })
-    // 渲染进程显示时触发
+    // Срабатывает во время процесса рендеринга
     childWin.once('show', () => {
       webContentSend.SendDataTest(childWin.webContents, arg.sendData)
     })
@@ -116,7 +116,7 @@ export class IpcMainHandleClass implements IIpcMainHandle {
     | Promise<Electron.MessageBoxReturnValue> = async (event, arg) => {
     const window = BrowserWindow.fromWebContents(event.sender)
     if (!window) {
-      // Optionally, handle the case where window is null
+      // При необходимости обработайте случай, когда окно равно нулю.
       throw new Error('No window found for event sender')
     }
     const res = await dialog.showMessageBox(window, {

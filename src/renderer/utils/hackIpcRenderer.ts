@@ -1,5 +1,5 @@
 function throwIpcError() {
-  throw new Error('ipcRenderer is not available')
+  throw new Error('ipcRenderer недоступен')
 }
 const IpcRendererProxyHandler = {
   get() {

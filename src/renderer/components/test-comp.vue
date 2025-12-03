@@ -81,7 +81,7 @@ const startProgress = () => {
   status.value = 'running'
   progress.value = 0
 
-  const duration = 3500 // 动画持续时间 (ms)
+  const duration = 3500 // Длительность анимации (мс)
   let startTime: number | null = null
 
   const animate = (timestamp: number) => {

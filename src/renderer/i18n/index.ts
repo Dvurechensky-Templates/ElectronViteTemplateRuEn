@@ -1,6 +1,6 @@
 import { computed, ref } from 'vue'
 
-export const globalLang = ref('zh-cn')
+export const globalLang = ref('ru')
 export function loadLanguages() {
   const context: any = import.meta.glob('./languages/*.ts', { eager: true })
 
