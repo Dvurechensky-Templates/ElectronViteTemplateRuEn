@@ -1,60 +1,81 @@
-# electron-vite-template
+# Electron & Vite Template
 
-![GitHub Repo stars](https://img.shields.io/github/stars/umbrella22/electron-vite-template)
-[![vue](https://img.shields.io/badge/vue-3.5.22-brightgreen.svg)](https://github.com/vuejs/vue-next)
-[![vite](https://img.shields.io/badge/vite-7.1.11-brightgreen.svg)](https://github.com/vitejs/vite)
-[![electron](https://img.shields.io/badge/electron-38.3.0-brightgreen.svg)](https://github.com/electron/electron)
-[![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/umbrella22/electron-vite-template/blob/master/LICENSE)
+![GitHub Repo stars](https://shields.dvurechensky.pro/github/stars/umbrella22/electron-vite-template)
+[![vue](https://shields.dvurechensky.pro/badge/vue-3.5.22-brightgreen.svg)](https://github.com/vuejs/vue-next)
+[![vite](https://shields.dvurechensky.pro/badge/vite-7.1.11-brightgreen.svg)](https://github.com/vitejs/vite)
+[![electron](https://shields.dvurechensky.pro/badge/electron-38.3.0-brightgreen.svg)](https://github.com/electron/electron)
+[![license](https://shields.dvurechensky.pro/github/license/mashape/apistatus.svg)](https://github.com/Dvurechensky-Templates/electron-vite-template-ru/blob/master/LICENSE)
 
-# Installation
+- [Electron \& Vite Template](#electron--vite-template)
+  - [Установка](#установка)
+    - [Версии инструкции](#версии-инструкции)
+  - [Настройка сборки](#настройка-сборки)
+  - [Список функций](#список-функций)
+  - [Встроено](#встроено)
 
-You can choose to clone the project or fork repository, or download the zip file directly. It is recommended to clone the repository so that you can receive the latest patches.
+## Установка
 
-To run a project, you need to have **node version 22** or higher and **use npm as your dependency management tool**
+Вы можете клонировать проект или форк-репозиторий, либо загрузить ZIP-файл напрямую. Рекомендуется клонировать репозиторий, чтобы иметь возможность получать последние обновления.
 
-[Document (Chinese only)](https://umbrella22.github.io/electron-vue-template-doc/)
+Для запуска проекта вам понадобится **версия Node 22** или выше и **использовать npm в качестве инструмента управления зависимостями**
 
-[For Chinese Developers](/README_ZH.md)
+[Документ (только на китайском языке)](https://umbrella22.github.io/electron-vue-template-doc/)
 
-[![Build TEST](https://github.com/umbrella22/electron-vite-template/actions/workflows/Build.yml/badge.svg)](https://github.com/umbrella22/electron-vite-template/actions/workflows/Build.yml)
+### Версии инструкции
 
-# Build Setup
+- [x] [Для китайских разработчиков](/docs/README_ZH.md)
+- [x] [Для английских разработчиков](/docs/README_EN.md)
 
-```bash
-# Clone this repository
-$ git clone https://github.com/umbrella22/electron-vite-template.git
-# Go into the repository
-$ cd electron-vite-template
-# install dependencies
-$ npm install
+## Настройка сборки
 
-# serve with hot reload at localhost:9080
-$ npm run dev
+> Клонировать этот репозиторий
 
-# build electron application for production
-$ npm run build
+```sh
+git clone https://github.com/Dvurechensky-Templates/electron-vite-template-ru.git
+```
 
+> Зайти в репозиторий
 
+```sh
+cd electron-vite-template
+```
+
+> Установить зависимости
+
+```sh
+npm i
+```
+
+> Запустить сервер с автообновлением изменений на адресе http://localhost:9080
+
+```sh
+npm run dev
+```
+
+> Построить приложение electron для релиза
+
+```sh
+npm run build
 ```
 
 ---
 
-# Function list
+## Список функций
 
-[x] Auto update
-[x] Incremental update
-[x] Loading animation before startup
-[x] i18n
+- [x] Автоматическое обновление
+- [x] Инкрементное обновление
+- [x] Загрузка анимации перед запуском
+- [x] Локализация - `i18n`
 
-# Built-in
+## Встроено
 
 - [vue-router](https://next.router.vuejs.org/index.html)
+  - Модуль маршрутизации для Vue, который позволяет создавать навигацию между страницами и управлять состоянием URL в SPA.
 - [pinia](https://pinia.esm.dev/)
+  - Современное хранилище состояний для Vue — лёгкое, типобезопасное и удобное в масштабировании.
 - [electron](http://www.electronjs.org/docs)
+  - Фреймворк для создания кроссплатформенных desktop-приложений на базе веб-технологий (HTML, CSS, JS).
 - electron-updater
+  - Инструмент автоматического обновления Electron-приложений: проверяет новые версии, скачивает и устанавливает их.
 - typescript
-
-# Note
-
-- [gitee](https://gitee.com/Zh-Sky/electron-vite-template) is only for domestic users to pull code，from github to synchronize，please visit github for PR
-- **Welcome to Issues and PR**
+  - Надстройка над JavaScript с системой статической типизации, делающая код более надёжным и удобным в поддержке.
