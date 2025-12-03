@@ -23,7 +23,7 @@ To run a project, you need to have **node version 22** or higher and **use npm a
 # Clone this repository
 git clone https://github.com/Dvurechensky-Templates/electron-vite-template-ru.git
 # Go into the repository
-cd electron-vite-template
+cd electron-vite-template-ru
 # install dependencies
 npm i
 

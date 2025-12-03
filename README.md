@@ -37,7 +37,7 @@ git clone https://github.com/Dvurechensky-Templates/electron-vite-template-ru.gi
 > Зайти в репозиторий
 
 ```sh
-cd electron-vite-template
+cd electron-vite-template-ru
 ```
 
 > Установить зависимости
