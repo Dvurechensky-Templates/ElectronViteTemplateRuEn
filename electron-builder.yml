@@ -11,3 +11,19 @@ snap:
     - network
     - audio-playback
     - removable-media
+
+  stagePackages:
+    - libnss3
+    - libx11-6
+    - libxkbcommon0
+    - libxext6
+    - libxcb1
+    - libxrandr2
+    - libxfixes3
+    - libxdamage1
+    - libxcomposite1
+    - libxrender1
+    - libasound2
+    - libdrm2
+    - libgl1-mesa-glx
+    - libgl1-mesa-dri
