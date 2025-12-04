@@ -46,18 +46,26 @@ apt install npm
 > Через NodeSource (для Debian/Ubuntu/Kali)
 
 ```sh
+# удаление старой версии node js
 sudo apt remove -y nodejs npm libnode-dev
 sudo apt autoremove -y
 
+# установка свежей версии Node js
 curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
 sudo apt-get install -y nodejs
 
+# проверка версии node (>= 22)
 node -v
 
+# очистка старых сборочных пакетов при попытке переустановить всё
 rm -rf node_modules package-lock.json
 npm cache clean --force
 
+# установка snap образа
 sudo snap install build/electron-vite-template-ru_1.0.0_amd64.snap --dangerous
+
+# удаление snap образа
+sudo snap remove electron-vite-template-ru
 
 # диагностика
 journalctl -xe | grep electron-vite-template-ru
