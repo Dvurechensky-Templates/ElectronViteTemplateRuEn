@@ -1,0 +1,13 @@
+snap:
+  confinement: devmode
+  grade: devel
+  plugs:
+    - desktop
+    - desktop-legacy
+    - x11
+    - wayland
+    - unity7
+    - home
+    - network
+    - audio-playback
+    - removable-media

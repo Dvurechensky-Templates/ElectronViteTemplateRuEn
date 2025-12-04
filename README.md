@@ -10,6 +10,9 @@
   - [Установка](#установка)
     - [Версии инструкции](#версии-инструкции)
   - [Настройка сборки](#настройка-сборки)
+    - [Linux](#linux)
+    - [Windows](#windows)
+    - [Основная часть](#основная-часть)
     - [Сборка под Windows](#сборка-под-windows)
       - [**Объяснение опций NSIS:**](#объяснение-опций-nsis)
   - [Список функций](#список-функций)
@@ -29,6 +32,42 @@
 - [x] [Для английских разработчиков](/docs/README_EN.md)
 
 ## Настройка сборки
+
+### Linux
+
+- Установить пакетный менеджер
+
+```sh
+apt install npm
+```
+
+- Обновить Node.js до последней LTS (рекомендуется >=18):
+
+> Через NodeSource (для Debian/Ubuntu/Kali)
+
+```sh
+sudo apt remove -y nodejs npm libnode-dev
+sudo apt autoremove -y
+
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+node -v
+
+rm -rf node_modules package-lock.json
+npm cache clean --force
+
+sudo snap install build/electron-vite-template-ru_1.0.0_amd64.snap --dangerous
+
+# диагностика
+journalctl -xe | grep electron-vite-template-ru
+```
+
+### Windows
+
+- Установить Node.js последней версии
+
+### Основная часть
 
 > Клонировать этот репозиторий
 
