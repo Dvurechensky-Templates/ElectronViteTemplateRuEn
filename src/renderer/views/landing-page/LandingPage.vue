@@ -109,7 +109,7 @@ function StopServer() {
 function StartServer() {
   ipcRendererChannel.StartServer.invoke()
 }
-// 获取electron方法
+// Получить electron методы
 function open() {}
 function CheckUpdate(data: string) {
   switch (data) {

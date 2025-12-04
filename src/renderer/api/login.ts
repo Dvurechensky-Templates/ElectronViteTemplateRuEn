@@ -1,4 +1,4 @@
-// 仅示例
+// Только пример
 import request from '@renderer/utils/request'
 
 // export function login (data) {

@@ -45,7 +45,7 @@ class MainInit {
     // Загрузить главное окно
     this.mainWindow.loadURL(this.winURL)
     // Интерфейс отображается после готовности DOM.
-    this.mainWindow.once('ready-to-show', () => {
+    this.mainWindow.webContents.once('did-finish-load', () => {
       this.mainWindow.show()
       if (config.UseStartupChart) this.loadWindow.destroy()
     })
