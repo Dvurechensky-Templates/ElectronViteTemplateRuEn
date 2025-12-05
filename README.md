@@ -61,13 +61,22 @@ node -v
 rm -rf node_modules package-lock.json
 npm cache clean --force
 
-# установка snap образа
+# установка snap образа (не проверена его работа)
 sudo snap install build/electron-vite-template-ru_1.0.0_amd64.snap --dangerous
 
-# удаление snap образа
+# удаление snap образа (не проверена его работа)
 sudo snap remove electron-vite-template-ru
 
-# диагностика
+# сборка Debian (.deb) образа
+npm run build:linux
+
+# установка Debian (.deb) образа
+sudo dpkg -i build/electron-vite-template-ru_1.0.0_amd64.deb
+
+# удаление Debian (.deb) образа
+sudo dpkg -r electron-vite-template-ru
+
+# диагностика установленного приложения
 journalctl -xe | grep electron-vite-template-ru
 ```
 
