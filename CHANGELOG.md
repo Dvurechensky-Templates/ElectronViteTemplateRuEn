@@ -1,171 +1,169 @@
-# Список изменений проекта
+# Project Changelog
 
-- [Список изменений проекта](#список-изменений-проекта)
-  - [4 декабря 2025 г.](#4-декабря-2025-г)
-  - [3 декабря 2025 г.](#3-декабря-2025-г)
-  - [3 марта 2024 г.](#3-марта-2024-г)
-  - [26 февраля 2024 г.](#26-февраля-2024-г)
-  - [9 декабря 2023 г.](#9-декабря-2023-г)
-  - [19 ноября 2023 г.](#19-ноября-2023-г)
-  - [16 сентября 2023 г.](#16-сентября-2023-г)
-  - [16 декабря 2022 г.](#16-декабря-2022-г)
-  - [30 ноября 2021 г.](#30-ноября-2021-г)
-  - [19 ноября 2021 г.](#19-ноября-2021-г)
-  - [17 ноября 2021 г.](#17-ноября-2021-г)
-  - [13 ноября 2021 г.](#13-ноября-2021-г)
-  - [9 ноября 2021 г.](#9-ноября-2021-г)
-  - [5 ноября 2021 г.](#5-ноября-2021-г)
-  - [4 ноября 2021 г.](#4-ноября-2021-г)
-  - [9 октября 2021 г.](#9-октября-2021-г)
-  - [16 августа 2021 г.](#16-августа-2021-г)
-  - [15 августа 2021 г.](#15-августа-2021-г)
-  - [11 августа 2021 г.](#11-августа-2021-г)
-  - [20 июля 2021 г.](#20-июля-2021-г)
-  - [22 июня 2021 г.](#22-июня-2021-г)
-  - [10 июня 2021 г.](#10-июня-2021-г)
-  - [8 июня 2021 г.](#8-июня-2021-г)
-    - [Как использовать `setup`?](#как-использовать-setup)
-      - [Среда VS Code](#среда-vs-code)
-  - [26 февраля 2021 г.](#26-февраля-2021-г)
+- [Project Changelog](#project-changelog)
+  - [December 4, 2025](#december-4-2025)
+  - [December 3, 2025](#december-3-2025)
+  - [March 3, 2024](#march-3-2024)
+  - [February 26, 2024](#february-26-2024)
+  - [December 9, 2023](#december-9-2023)
+  - [November 19, 2023](#november-19-2023)
+  - [September 16, 2023](#september-16-2023)
+  - [December 16, 2022](#december-16-2022)
+  - [November 30, 2021](#november-30-2021)
+  - [November 19, 2021](#november-19-2021)
+  - [November 17, 2021](#november-17-2021)
+  - [November 13, 2021](#november-13-2021)
+  - [November 9, 2021](#november-9-2021)
+  - [November 5, 2021](#november-5-2021)
+  - [November 4, 2021](#november-4-2021)
+  - [October 9, 2021](#october-9-2021)
+  - [August 16, 2021](#august-16-2021)
+  - [August 15, 2021](#august-15-2021)
+  - [August 11, 2021](#august-11-2021)
+  - [July 20, 2021](#july-20-2021)
+  - [June 22, 2021](#june-22-2021)
+  - [June 10, 2021](#june-10-2021)
+  - [June 8, 2021](#june-8-2021)
+    - [How to use `setup`?](#how-to-use-setup)
+      - [VS Code Environment](#vs-code-environment)
+  - [February 26, 2021](#february-26-2021)
 
-## 4 декабря 2025 г.
+## December 4, 2025
 
-- Исправлена ошибка запуска приложения на Ubuntu в WMWare и вероятнее всего на любых других Ubuntu с `.desktop` ярлыка
+- Fixed application launch issue on Ubuntu in VMware and likely on other Ubuntu systems when using `.desktop` shortcut
 
-## 3 декабря 2025 г.
+## December 3, 2025
 
-- Документация переведена на русский язык
-- Проработал `CHANGELOG.md` на русский язык
-- Переведены все сообщения в лог, комментарии кода и сами формы на русский язык, добавлена русская локализация и отключена базовая китайская от кнопки смены языка (извините)
-- Исправлена устаревшая конструкция `defaultSession.loadExtension`
-- Пропатчен `build.json` для успешной сборки на `Windows`
-- Добавлена поддержка `x32` Windows
+- Documentation translated into Russian
+- `CHANGELOG.md` rewritten in Russian
+- All logs, code comments, and UI translated into Russian; added Russian localization and disabled default Chinese language from the language switch (sorry)
+- Fixed deprecated `defaultSession.loadExtension`
+- Patched `build.json` for successful Windows build
+- Added support for `x32` Windows
 
-## 3 марта 2024 г.
+## March 3, 2024
 
-**Критические изменения**
+**Critical changes**
 
-– Унифицированы соглашения об именовании файлов и IPC.
-– Удалена зависимость от Express; вам потребуется установить его отдельно, если вы хотите использовать встроенный сервер.
-– Удалены ненужные прослушиватели, добавляемые при создании окон, что делает код чище.
+- Unified file naming and IPC conventions
+- Removed dependency on Express; install it separately if needed
+- Removed unnecessary window listeners, making code cleaner
 
-## 26 февраля 2024 г.
+## February 26, 2024
 
-- vite `5.0.7` -> `5.1.4`
+- vite `5.0.7` → `5.1.4`
 
-## 9 декабря 2023 г.
+## December 9, 2023
 
-- vite `4.4.9` -> `5.0.7`
-- Устранить негативные последствия обновления
+- vite `4.4.9` → `5.0.7`
+- Fixed issues caused by update
 
-## 19 ноября 2023 г.
+## November 19, 2023
 
-– Исправлены ошибки, возникавшие при упаковке.
-– Исправлена ​​проблема с некорректным открытием упакованного файла.
+- Fixed packaging errors
+- Fixed issue with incorrectly opening packaged files
 
-## 16 сентября 2023 г.
+## September 16, 2023
 
-- Удалены зависимости element-plus и vue-i18n, реализована реализация, которую можно удалить в любой момент.
-- Использована нативная панель действий вместо автоматически определяемого заголовка.
+- Removed element-plus and vue-i18n dependencies, replaced with removable implementation
+- Switched to native action bar instead of auto-detected title
 
-## 16 декабря 2022 г.
+## December 16, 2022
 
-- Ого~ Прошло так много времени с последнего обновления~ Это обновление пока представляет собой лишь небольшие исправления и патчи, ничего серьёзного, потому что после Нового года ожидается выход улучшенной версии, и тогда это станет демоверсией~
+- Wow~ it's been a long time since the last update~ This update contains only minor fixes and patches. A major improved version is expected after New Year, and this will become a demo version~
 
-## 30 ноября 2021 г.
+## November 30, 2021
 
-- Информация о конфигурации в отдельном окне
-- Улучшено поведение горячего обновления
-- Исправлен сбой сборки, вызванный чувствительностью к регистру имени файла платформы
-- Исправлена ​​ошибка перекомпоновки событий, вызванная незарегистрированными событиями автоматического обновления
+- Configuration info in a separate window
+- Improved hot reload behavior
+- Fixed build crash due to case-sensitive filenames
+- Fixed event duplication caused by unregistered auto-update events
 
-## 19 ноября 2021 г.
+## November 19, 2021
 
-- Добавлены отсутствующие зависимости
-- Обновлены зависимости
-- Добавлена ​​поддержка JSX в процесс рендеринга
+- Added missing dependencies
+- Updated dependencies
+- Added JSX support in renderer
 
-## 17 ноября 2021 г.
+## November 17, 2021
 
-- Изменённый пример кода для передачи данных при создании дочерних окон
+- Updated example for passing data to child windows
 
-## 13 ноября 2021 г.
+## November 13, 2021
 
-- Исправлена ​​проблема, из-за которой в новых открытых окнах по-прежнему отображался системный заголовок при включённом пользовательском заголовке.
-- Обновлены зависимости.
-- Отсоединен модуль обновления.
+- Fixed issue where system title appeared in new windows despite custom title enabled
+- Updated dependencies
+- Detached update module
 
-## 9 ноября 2021 г.
+## November 9, 2021
 
-- Исправлена ​​проблема с неполными адресами файлов для загрузки горячих обновлений.
+- Fixed incomplete file paths for hot update downloads
 
-## 5 ноября 2021 г.
+## November 5, 2021
 
-- Исправлена ​​ошибка `логической ошибки без границ`
-- Теперь настройка по умолчанию — `режим без границ`
+- Fixed `boundary logic error`
+- Default mode set to `borderless`
 
-## 4 ноября 2021 г.
+## November 4, 2021
 
-- Удалён модуль `vuex`
-- Заменён `vuex` на `pinia`
-- Исправлена ​​проблема с `потерей данных при создании дочерних окон`
+- Removed `vuex`
+- Replaced `vuex` with `pinia`
+- Fixed `data loss when creating child windows`
 
-## 9 октября 2021 г.
+## October 9, 2021
 
-- Обновлены зависимости:
-  - Vue `3.2.12` -> `3.2.20`
-  - Vite `2.5.8` -> `2.6.5`
-  - Electron `13.1.9` -> `15.1.2` (Отлично, теперь у вас есть китайская консоль!)
+- Updated dependencies:
+  - Vue `3.2.12` → `3.2.20`
+  - Vite `2.5.8` → `2.6.5`
+  - Electron `13.1.9` → `15.1.2` (Great, now you have a Chinese console!)
 
-## 16 августа 2021 г.
+## August 16, 2021
 
-- Конфигурация конструктора отделена от пакета.
-- Обновлены Vue до версии `3.2.3` и `Vite` до версии `2.5.0`.
+- Builder config separated from package
+- Updated Vue to `3.2.3` and Vite to `2.5.0`
 
-## 15 августа 2021 г.
+## August 15, 2021
 
-- Установите Chrome 91 в качестве целевой платформы компиляции процесса рендеринга. **Обратите внимание, что эта настройка решает проблему некорректной компиляции await верхнего уровня, но также означает, что версии ниже Chrome 91 будут прекращены. Веб-разработчикам следует соблюдать осторожность.**
-- Добавлен доступ к папке static для основного процесса в среде разработки: `process.env.__static`
+- Set Chrome 91 as renderer target. **Note: fixes top-level await issues but drops support for older versions**
+- Added access to static folder via `process.env.__static`
 
-## 11 августа 2021 г.
+## August 11, 2021
 
-- Добавлена ​​поддержка `i18n`
-- Добавлена ​​поддержка `i18n` в `element-plus`
+- Added `i18n` support
+- Added `i18n` support for `element-plus`
 
-## 20 июля 2021 г.
+## July 20, 2021
 
-- Обновлены зависимости
-- `preload` теперь по умолчанию использует версию TypeScript. Изменение `preload.ts` перезагрузит всё приложение Electron, фактически изменив код основного процесса.
-- Добавлена ​​обфускация `preload` и основного процесса.
-- Изменено расположение зависимостей для уменьшения размера упакованного node_module.
+- Updated dependencies
+- `preload` now uses TypeScript by default
+- Added obfuscation for preload and main process
+- Optimized dependency structure
 
-## 22 июня 2021 г.
+## June 22, 2021
 
-- Удален контент, связанный с `node`, из процесса рендеринга и заменен на `preload`.
+- Removed Node usage from renderer, moved to preload
 
-> Честно говоря, на данный момент нет лучшего решения с использованием `preload`; мы рассмотрим варианты оптимизации в будущем.
+> No perfect preload solution yet; improvements planned
 
-**Чтобы изменить `preload.js`, пожалуйста, измените `.electron-vite/preload.js`.**
+See: https://www.electronjs.org/docs/api/context-bridge#exposing-node-global-symbols
 
-Подробнее см.: [Документация Electron - Справочный пример preload.js](https://www.electronjs.org/docs/api/context-bridge#exposing-node-global-symbols)
+## June 10, 2021
 
-## 10 июня 2021 г.
+- Dependencies updated
 
-- Обновление зависимостей
+## June 8, 2021
 
-## 8 июня 2021 г.
+- Renderer fully restructured
 
-- Полная настройка компонента процесса рендеринга.
+### How to use `setup`?
 
-### Как использовать `setup`?
+#### VS Code Environment
 
-#### Среда VS Code
+- Disable `vetor` / `voter`
+- Install `volor`
 
-- Отключите расширение `vetor` или `voter`
-- Установите и включите расширение `volor`
+More: https://github.com/vuejs/rfcs/pull/227
 
-Дополнительную информацию о проблемах синтаксического сахара `setup` можно найти на странице [Новая настройка скрипта](https://github.com/vuejs/rfcs/pull/227).
+## February 26, 2021
 
-## 26 февраля 2021 г.
-
-— Проект создан.
+- Project created
