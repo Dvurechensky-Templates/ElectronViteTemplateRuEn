@@ -1,19 +1,12 @@
 # Electron & Vite Template
 
-<div align="center" style="margin: 20px 0; padding: 10px; background: #1c1917; border-radius: 10px;">
-  <strong>🌐 语言: </strong>
-  
-  <span style="color: #F5F752; margin: 0 10px;">
-    ✅ 🇨🇳 中文（當前的）
-  </span>
+<div align="center">
 
-  <a href="./README.ru.md" style="color: #F5F752; margin: 0 10px;">
-    🇷🇺 Russian
-  </a>
-  | 
-  <a href="./README.md" style="color: #0891b2; margin: 0 10px;">
-    🇺🇸 English
-  </a>
+<strong>语言: </strong>
+<span style="color: #F5F752; margin: 0 10px;">✅ CN 中文（当前）</span> |
+<a href="./README.ru.md">RU Russian</a> |
+<a href="./README.md">US English</a>
+
 </div>
 
 ---
